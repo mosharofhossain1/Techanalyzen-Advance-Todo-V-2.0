@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdvanceTodoApp V-2.01</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="shortcut icon" href="todologo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./js/app.js"></script>
+</head>
+<body>
+    
+<main>
+    <h1 class="main_title">My Todo Lists </h1>
+    <h3 class="sub_title">New Task Creation </h3>
+    <div class="separator"></div>
+    <!-- Task Form Start -->
+    <form id="form">
+        <!-- task name  -->
+        <div class="taskName">
+            <label for="name">Name :</label>
+            <input id="name" name="name" type="text" placeholder="Add a New Task">
+        </div>
+        <!-- task priority -->
+        <div class="taskPriority">
+            <label for="priority">Priority:</label>
+            <select name="priority" id="priority">
+                <option disabled value="select">Select one</option>
+                <option value="heigh">Heigh</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+        </div>
+
+        <!-- date -->
+        <div class="date">
+            <label for="date">Date:</label>
+            <input type="date" id="date">
+        </div>
+        <!-- addBtn -->
+        <div class="addBtn">
+            <button>Add Task</button>
+        </div>
+    </form>
+    <!-- Task Form End -->
+
+    <!--  Second task MannageMent Section -->
+
+    <h3 class="sub_title">Task Management </h3>
+    <div class="separator"></div>
+
+</main>
+
+
+</body>
+</html>
