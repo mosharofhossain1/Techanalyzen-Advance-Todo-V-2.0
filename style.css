@@ -11,18 +11,33 @@
 
 main{
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     background-color: blueviolet;
     padding: 20px;
     margin: auto;
     color: white;
+    height: 95vh;
 }
 .main_title{
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    position: relative;
+}
+.main_title::after{
+    content: "";
+    background-color: tomato;
+    height: 2px;
+    width: 150px;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    position: absolute;
 }
 .sub_title{
     margin: 20px 0px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .separator{
    height: 2px;
@@ -58,4 +73,71 @@ main{
     border: none;
     background-color: tomato;
     color: white;
+}
+
+/* Tools area design */
+.toolsArea{
+    display: flex;
+    justify-content: space-around;
+}
+.search input, .filter select, .sort select, .byDate input{
+    padding: 7px 7px;
+    border-radius: 3px;
+    border: none;
+}
+
+/* bulk area */
+.bulkArea{
+    background-color: white;
+    padding: 7px 15px;
+    margin: 10px 0px;
+    border-radius: 3px;
+    /* display: none; */
+}
+.bulkArea #deleteBtn, #editBtn, #dismiss{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+   
+}
+#deleteBtn{
+    background-color: orange;
+}
+#editBtn{
+    background-color: tomato;
+}
+#dismiss{
+    background-color: rgb(229, 255, 0);
+}
+table{
+    margin: 10px 0px;
+}
+thead{
+    background-color: #0F0825;
+    padding: 5px;
+}
+table, thead, tbody, tr{
+    width: 100%;
+    display: block;
+}
+tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+tr:hover{
+    background-color: black;
+}
+td, th{
+    flex: 1;
+    text-align: center;
+}
+td button{
+    background-color: unset;
+    border: none;
+}
+button i{
+    pointer-events: none;
+    color: white;
+    font-size: 18px;
 }

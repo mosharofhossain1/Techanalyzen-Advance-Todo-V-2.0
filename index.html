@@ -1,57 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdvanceTodoApp V-2.01</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="shortcut icon" href="todologo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script defer src="./js/app.js"></script>
 </head>
+
 <body>
-    
-<main>
-    <h1 class="main_title">My Todo Lists </h1>
-    <h3 class="sub_title">New Task Creation </h3>
-    <div class="separator"></div>
-    <!-- Task Form Start -->
-    <form id="form">
-        <!-- task name  -->
-        <div class="taskName">
-            <label for="name">Name :</label>
-            <input id="name" name="name" type="text" placeholder="Add a New Task">
+
+    <main>
+        <h1 class="main_title">My Todo Lists </h1>
+        <h3 class="sub_title">New Task Creation </h3>
+        <div class="separator"></div>
+        <!-- Task Form Start -->
+        <form id="form">
+            <!-- task name  -->
+            <div class="taskName">
+                <label for="name">Name :</label>
+                <input id="name" name="name" type="text" placeholder="Add a New Task">
+            </div>
+            <!-- task priority -->
+            <div class="taskPriority">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                    <option disabled value="select">Select one</option>
+                    <option value="heigh">Heigh</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+
+            <!-- date -->
+            <div class="date">
+                <label for="date">Date:</label>
+                <input type="date" id="date">
+            </div>
+            <!-- addBtn -->
+            <div class="addBtn">
+                <button>Add Task</button>
+            </div>
+        </form>
+        <!-- Task Form End -->
+
+        <!--  Second task MannageMent Section -->
+
+        <h3 class="sub_title">Task Management </h3>
+        <div class="separator"></div>
+        <div class="toolsArea">
+            <!-- search -->
+            <div class="search">
+                <label for="search">Search :</label>
+                <input type="search" placeholder="Search Your Task">
+            </div>
+            <!-- filter -->
+            <div class="filter">
+                <label for="filter">Filter :</label>
+                <select name="filter" id="filter">
+                    <option value="all">All</option>
+                    <option value="complate">Complate</option>
+                    <option value="incomplate">InComplate</option>
+                    <option value="today">Today</option>
+                    <option value="heigh">Heigh</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+            <!-- sort -->
+            <div class="sort">
+                <label for="sort">Sort :</label>
+                <select name="sort" id="sort">
+                    <option value="newest">Newest</option>
+                    <option value="old">Old</option>
+                </select>
+            </div>
+            <!-- by_date -->
+            <div class="byDate">
+                <label for="byDate">ByDate :</label>
+                <input type="date" name="byDate" id="byDate">
+            </div>
         </div>
-        <!-- task priority -->
-        <div class="taskPriority">
-            <label for="priority">Priority:</label>
-            <select name="priority" id="priority">
-                <option disabled value="select">Select one</option>
-                <option value="heigh">Heigh</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
+        <!-- Bulk section  -->
+        <h1 class="sub_title">Edit Task</h1>
+        <div class="separator"></div>
+        <div class="bulkArea">
+            <button id="deleteBtn">Delete</button>
+            <button id="editBtn">Edit</button>
+            <button id="dismiss">X</button>
         </div>
 
-        <!-- date -->
-        <div class="date">
-            <label for="date">Date:</label>
-            <input type="date" id="date">
-        </div>
-        <!-- addBtn -->
-        <div class="addBtn">
-            <button>Add Task</button>
-        </div>
-    </form>
-    <!-- Task Form End -->
+        <!-- edit section -->
+        <form id="form">
+            <!-- task name  -->
+            <div class="taskName">
+                <label for="name">Name :</label>
+                <input id="name" name="name" type="text" placeholder="Add a New Task">
+            </div>
+            <!-- task priority -->
+            <div class="taskPriority">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority">
+                    <option disabled value="select">Select one</option>
+                    <option value="heigh">Heigh</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
 
-    <!--  Second task MannageMent Section -->
-
-    <h3 class="sub_title">Task Management </h3>
-    <div class="separator"></div>
-
-</main>
+            <!-- date -->
+            <div class="date">
+                <label for="date">Date:</label>
+                <input type="date" id="date">
+            </div>
+            <!-- addBtn -->
+            <div class="addBtn">
+                <button>Add Task</button>
+            </div>
+        </form>
+        <!-- table section -->
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th>
+                        <label for="checkbox"  >All</label>
+                        <input type="checkbox" name="checkbox" id="checkbox">
+                    </th> -->
+                    <th>NO.</th>
+                    <th>Task Name</th>
+                    <th> Priority</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Gaming</td>
+                    <td>Heigh</td>
+                    <td>incomplate</td>
+                    <td>5/1/2024</td>
+                    <td>
+                        <button id="edit">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="check">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Gaming</td>
+                    <td>Heigh</td>
+                    <td>incomplate</td>
+                    <td>5/1/2024</td>
+                    <td>
+                        <button id="edit">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="check">
+                            <i class="fas fa-check"></i>
+                        </button>
+                        <button id="delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 
 
 </body>
+
 </html>
