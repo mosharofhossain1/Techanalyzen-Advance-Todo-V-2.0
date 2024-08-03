@@ -1,0 +1,45 @@
+@media screen and (max-width: 500px) {
+    main {
+        width: 100%;
+    }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #form,
+    .taskName,
+    .taskPriority,
+    .addBtn,
+    .date {
+        margin: 10px 0px;
+    }
+
+    .taskName input,
+    .taskPriority select,
+    .date input {
+        width: 100%;
+    }
+
+    .toolsArea {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toolsArea .search input,
+    .filter select,
+    .sort select,
+    .byDate input {
+        width: 100%;
+    }
+
+    table thead tr th {
+        font-size: 14px;
+    }
+
+    tbody tr td {
+        font-size: 14px;
+    }
+}
