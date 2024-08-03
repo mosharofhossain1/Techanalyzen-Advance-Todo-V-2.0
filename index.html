@@ -22,7 +22,7 @@
             <!-- task name  -->
             <div class="taskName">
                 <label for="name">Name :</label>
-                <input id="name" name="name" type="text" placeholder="Add a New Task">
+                <input required id="name" name="name" type="text" placeholder="Add a New Task">
             </div>
             <!-- task priority -->
             <div class="taskPriority">
@@ -38,11 +38,11 @@
             <!-- date -->
             <div class="date">
                 <label for="date">Date:</label>
-                <input type="date" id="date">
+                <input required type="date" id="date" name="date">
             </div>
             <!-- addBtn -->
             <div class="addBtn">
-                <button>Add Task</button>
+                <button id="addTaskBtn">Add Task</button>
             </div>
         </form>
         <!-- Task Form End -->
@@ -137,7 +137,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <tr>
                     <td>1</td>
                     <td>Gaming</td>

@@ -8,7 +8,9 @@
     outline: none;
     list-style: none; 
 }
-
+/* .toolsArea, .bulkArea{
+    display: none;
+} */
 main{
     width: 100%;
     max-width: 800px;
@@ -141,3 +143,4 @@ button i{
     color: white;
     font-size: 18px;
 }
+
