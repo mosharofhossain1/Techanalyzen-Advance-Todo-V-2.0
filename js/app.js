@@ -1,88 +1,125 @@
-// Elements Select
+// #### Elements Select
 const newTaskForm = document.getElementById('form');
-const tobody = document.getElementById('tbody');
+const tbody = document.getElementById('tbody');
 
 // #### utilites 
-function getUid(){
-    return Date.now() + Math.round(Math.random() * 1000).toString();
+function getUI() {
+    return Date.now() + Math.round(Math.random() * 1000).toString()
 }
-// ########localStorage function 
-// add singleTaskToloacalStorage
-function addTaskTolocalStorage(task){
-  const tasks = getAllTaskFromlocalStorage();
-  tasks.push(task);
-  addTasksTolocalStorage(tasks);
-}
-// getAlltaskTolocalStorage
-function getAllTaskFromlocalStorage(){
+
+// ### Loacal Storage 
+// getTasktoLocalStorage 
+function getTasktoLocalStorage() {
     let tasks = [];
     const rowTask = localStorage.getItem('tasks');
-    if(rowTask){
-        tasks = JSON.parse(rowTask);
-    } 
+    if (rowTask) {
+        tasks = JSON.parse(rowTask)
+    }
     return tasks;
 }
-// add multiple task
-function addTasksTolocalStorage(tasks){
+// add multiple task 
+function addTasksToLocalStorage(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
 }
-// ########  handlers function
-// event functions
-function newTaskFormhandler(event){
+// add single task to localstorage
+function addSingleTask(task) {
+    const tasks = getTasktoLocalStorage();
+    tasks.push(task);
+    addTasksToLocalStorage(tasks)
+}
+// function handler 
+function newTaskFormHandler(event) {
     event.preventDefault();
-    const id = getUid();
+    const id = getUI()
     const tasks = {
-       id,
-       status: 1,
+        id,
+        status: 0
     };
+    [...newTaskForm.elements].forEach(element => {
+        if (element.name) {
+            tasks[element.name] = element.value;
+        }
 
-    [...newTaskForm.elements].forEach(element =>{
-        if(element.name)
-       tasks[element.name] = element.value;
-    // console.log(element.name)
-    })
-    // tasks.id = getUid()
-    // tasks.status = 0
-    newTaskForm.reset();
-    addTaskTolocalStorage(tasks)
+    });
+    newTaskForm.reset()
+    addSingleTask(tasks);
+    updateUI()
 }
 
-// UI handlers 
 
+// ## UI handler 
 // create tr
-function createTr({name,priority, status,date, id},index){
+function createTr({ name, status, priority, date, id }, index) {
     const formatedDate = new Date(date).toDateString();
-        return `<tr id='${id}'>
-                    <td>${index + 1}</td>
-                    <td>${name}</td>
-                    <td>${priority}</td>
-                    <td>${status ? 'Compleate' : 'Incompleate'}</td>
-                    <td>${formatedDate}</td>
-                    <td>
-                        <button id="edit">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button id="check">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button id="delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>`
-};
-// ui function 
-function updateUI(){
-    const tasks = getAllTaskFromlocalStorage();
-    const taskHtmlArray = tasks.map((task,index) =>{
-        return createTr(task,index)
-    })
-    const taskLists = taskHtmlArray.join("");
-    tobody.innerHTML = taskLists;
-
+    return ` <tr>
+               <td>${index + 1}</td>
+                <td>${name}</td>
+                <td>${priority}</td>
+                <td>${status ? 'compleate' : 'Incompleate'}</td>
+                <td>${formatedDate}</td>
+                <td>
+                <button data-id="${id}" id="edit">
+                 <i class="fas fa-pen"></i>
+                 </button>
+                 <button data-id="${id}" id="check">
+                  <i class="fas fa-check"></i>
+                   </button>
+                 <button data-id="${id}" id="delete">
+                      <i class="fas fa-trash"></i>
+                 </button>
+                  </td>
+            </tr>`
 }
 
+// update ui
+function updateUI() {
+    const tasks = getTasktoLocalStorage();
+    const taskHtmlArray = tasks.map((task, index) => {
+        return createTr(task, index)
+    })
+    const taskList = taskHtmlArray.join("");
+    tbody.innerHTML = taskList;
+}
 updateUI();
-// ####### addEvent listeners
-newTaskForm.addEventListener('submit', newTaskFormhandler);
+
+// delete handler 
+function deleteHandler(id) {
+    const tasks = getTasktoLocalStorage();
+    const taskAfterDeleting = tasks.filter(({ id: taskId }) => taskId !== id)
+    addTasksToLocalStorage(taskAfterDeleting);
+    updateUI();
+}
+// compleate/ incompleate handler
+function statusHandler(id) {
+    const tasks = getTasktoLocalStorage();
+    const taskAfterUpdating = tasks.map((task) => {
+        if (task.id === id) {
+            if (task.status === 0) {
+                task.status = 1;
+            }
+            else {
+                task.status = 0;
+            }
+        }
+        return task;
+    });
+    addTasksToLocalStorage(taskAfterUpdating);
+    updateUI();
+}
+// ### action handler 
+function actionHandler(e) {
+    const { target: { id: actionId, dataset: { id: taskId } = {} }, } = e;
+
+    // const { dataset: { id } } = target; [wrong way ]
+    if (actionId === 'delete') {
+        // const id =target.dataset.id;
+        // const { id } = target.dataset; [distractor system]
+        deleteHandler(taskId);
+    } else if (actionId === 'check') {
+        statusHandler(taskId);
+    }
+
+}
+// ### event listener
+newTaskForm.addEventListener('submit', newTaskFormHandler);
+tbody.addEventListener('click', actionHandler);

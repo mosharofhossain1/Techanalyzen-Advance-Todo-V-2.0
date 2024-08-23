@@ -1,3 +1,47 @@
+@media screen and (max-width: 320px) {
+    table {
+        margin: 10px 0px;
+    }
+
+    thead {
+        background-color: #0F0825;
+        /* padding: 5px; */
+    }
+
+    table,
+    thead,
+    tbody,
+    tr {
+        max-width: 100%;
+        display: block;
+        font-size: 8px;
+    }
+
+    tr {
+        font-size: 8px;
+    }
+
+    tr:hover {
+        background-color: black;
+    }
+
+    td,
+    th {
+        font-size: 8px;
+    }
+
+    td button {
+        background-color: unset;
+        border: none;
+    }
+
+    button i {
+        pointer-events: none;
+        color: white;
+        font-size: 10px;
+    }
+}
+
 @media screen and (max-width: 500px) {
     main {
         width: 100%;
@@ -6,21 +50,13 @@
     #form {
         display: flex;
         flex-direction: column;
-
-    }
-
-    #form,
-    .taskName,
-    .taskPriority,
-    .addBtn,
-    .date {
-        margin: 10px 0px;
     }
 
     .taskName input,
     .taskPriority select,
     .date input {
         width: 100%;
+        margin: 10px 0px;
     }
 
     .toolsArea {
@@ -33,13 +69,53 @@
     .sort select,
     .byDate input {
         width: 100%;
+        margin: 10px 0px;
     }
 
     table thead tr th {
-        font-size: 14px;
+        font-size: 5px;
     }
 
     tbody tr td {
-        font-size: 14px;
+        font-size: 5px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        width: 100%;
+    }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .taskName input,
+    .taskPriority select,
+    .date input {
+        width: 100%;
+        margin: 10px 0px;
+    }
+
+    .toolsArea {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toolsArea .search input,
+    .filter select,
+    .sort select,
+    .byDate input {
+        width: 100%;
+        margin: 10px 0px;
+    }
+
+    table thead tr th {
+        font-size: 16px;
+    }
+
+    tbody tr td {
+        font-size: 16px;
     }
 }
