@@ -13,6 +13,13 @@
     display: none;
 } */
 
+.saveBtnStyle {
+    background-color: orange;
+    color: white;
+    padding: 7px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+}
 
 main {
     width: 100%;
@@ -157,6 +164,8 @@ tr {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* margin-bottom: 15px;
+    padding: 5px 0px; */
 }
 
 tr:hover {
@@ -167,6 +176,8 @@ td,
 th {
     flex: 1;
     text-align: center;
+    margin-bottom: 15px;
+    align-items: center;
 }
 
 td button {
@@ -178,4 +189,9 @@ button i {
     pointer-events: none;
     color: white;
     font-size: 16px;
+}
+
+#edit_area,
+.bulkArea {
+    display: none;
 }

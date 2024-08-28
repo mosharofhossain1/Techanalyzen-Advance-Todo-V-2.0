@@ -56,17 +56,17 @@
             <!-- search -->
             <div class="search">
                 <label for="search">Search :</label>
-                <input type="search" placeholder="Search Your Task">
+                <input type="search" id="search" placeholder="Search Your Task">
             </div>
             <!-- filter -->
             <div class="filter">
                 <label for="filter">Filter :</label>
                 <select name="filter" id="filter">
                     <option value="all">All</option>
-                    <option value="complate">Complate</option>
-                    <option value="incomplate">InComplate</option>
+                    <option value="1">Complate</option>
+                    <option value="0">Pending</option>
                     <option value="today">Today</option>
-                    <option value="heigh">Heigh</option>
+                    <option value="high">Heigh</option>
                     <option value="medium">Medium</option>
                     <option value="low">Low</option>
                 </select>
@@ -95,40 +95,42 @@
         </div>
 
         <!-- edit section -->
-        <form id="form">
-            <!-- task name  -->
-            <div class="taskName">
-                <label for="name">Name :</label>
-                <input id="name" name="name" type="text" placeholder="Add a New Task">
-            </div>
-            <!-- task priority -->
-            <div class="taskPriority">
-                <label for="priority">Priority:</label>
-                <select name="priority" id="priority">
-                    <option disabled value="select">Select one</option>
-                    <option value="heigh">Heigh</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                </select>
-            </div>
+        <div id="edit_area">
+            <form id="Editform">
+                <!-- task name  -->
+                <div class="taskName">
+                    <label for="name">Name :</label>
+                    <input id="name" name="name" type="text" placeholder="Add a New Task">
+                </div>
+                <!-- task priority -->
+                <div class="taskPriority">
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority">
+                        <option disabled value="">Select one</option>
+                        <option value="heigh">Heigh</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
 
-            <!-- date -->
-            <div class="date">
-                <label for="date">Date:</label>
-                <input type="date" id="date">
-            </div>
-            <!-- addBtn -->
-            <div class="addBtn">
-                <button>Add Task</button>
-            </div>
-        </form>
+                <!-- date -->
+                <div class="date">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" value="">
+                </div>
+                <!-- addBtn -->
+                <div class="addBtn">
+                    <button>Add Task</button>
+                </div>
+            </form>
+        </div>
         <!-- table section -->
         <table>
             <thead>
                 <tr>
                     <th>
                         <label for="checkbox">All</label>
-                        <input type="checkbox" name="checkbox" id="checkbox">
+                        <input type="checkbox" name="checkbox" id="allSelect">
                     </th>
                     <th>NO.</th>
                     <th>Task Name</th>
