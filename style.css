@@ -119,10 +119,11 @@ main {
     padding: 7px 15px;
     margin: 10px 0px;
     border-radius: 3px;
-    /* display: none; */
+    display: none;
 }
 
-.bulkArea #deleteBtn,
+.bulkArea,
+#deleteBtn,
 #editBtn,
 #dismiss {
     padding: 5px 10px;
@@ -191,7 +192,12 @@ button i {
     font-size: 16px;
 }
 
-#edit_area,
-.bulkArea {
+#edit_area {
     display: none;
+
+}
+
+#Editform {
+    display: flex;
+    justify-content: space-around;
 }

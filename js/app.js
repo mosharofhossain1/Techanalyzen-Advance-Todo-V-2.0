@@ -68,7 +68,7 @@ function editHandler(id) {
 
     const taskTr = document.getElementById(id);
 
-    const statusTd = taskTr.querySelector('.status');
+    // const statusTd = taskTr.querySelector('.status');
 
 
     // Task Name
@@ -87,6 +87,16 @@ function editHandler(id) {
         <option ${priority === 'low' ? 'selected' : ''} value ="low">Low</option>`
     priorityInp.value = priority;
     priorityTd.appendChild(priorityInp)
+
+
+    // Status 
+    const taskStatus = taskTr.querySelector(`.status`);
+    const statusInput = document.createElement(`select`);
+    statusInput.setAttribute(`id`, `editPrio`);
+    statusInput.innerHTML = `<option  ${status === 0 ? "selected" : ""}>incomplete</option>
+                            <option  ${status === 1 ? "selected" : ""}>completed</option>`;
+    taskStatus.innerHTML = ``;
+    taskStatus.appendChild(statusInput);
 
     // date 
     const dateTd = taskTr.querySelector('.date');
@@ -438,4 +448,4 @@ allSelect.addEventListener('input', allSelectHandler);
 dismiss.addEventListener('click', dismissHandler);
 deleteBtn.addEventListener('click', deleteBtnHandler);
 editBtn.addEventListener('click', bulkEditBtnHandler);
-editForm.addEventListener('submit', bulkEditFromHandler)
+editForm.addEventListener('submit', bulkEditFromHandler);
